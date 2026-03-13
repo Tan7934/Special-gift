@@ -1,0 +1,90 @@
+/* 1. 让整个页面居中 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    min-height: 100vh;       /* 占据整个屏幕高度 */
+    flex-direction: column;  /* 让里面的元素上下排列 */
+    background-color: peachpuff;/* 粉紫渐变 */
+    font-family: 'Microsoft YaHei', sans-serif;
+    overflow-x: hidden;      /* 防止左右晃动 */
+    position: relative;
+    
+}
+
+
+/* 制作一个漂浮的小装饰 */
+.bg-decoration {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4); /* 半透明白色 */
+    user-select: none;
+    z-index: 1;
+    animation: floating 6s infinite ease-in-out;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* 2. 让文字容器居中 */
+.entrance-container {
+    text-align: center;      /* 让容器内的文字、按钮居中 */
+    z-index: 10;
+}
+
+.friends-btn {
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: #ff4d6d;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    transition: transform 0.3s;
+}
+
+.friends-btn:hover {
+    transform: scale(1.05);
+}
+
+/* 隐藏入口样式 */
+#secret-snoopy {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#snoopy-img {
+    width: 80px; /* 史努比的大小 */
+    transition: transform 0.3s;
+}
+
+/* 史努比跳动动画 */
+#secret-snoopy:hover #snoopy-img {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* 对话气泡 */
+.bubble {
+    position: absolute;
+    top: -40px;
+    left: 50px;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #666;
+    display: none; /* 默认隐藏 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#secret-snoopy:hover .bubble {
+    display: block;
+}

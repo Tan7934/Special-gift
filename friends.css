@@ -1,0 +1,67 @@
+/* 1. 修正容器：确保 margin 语法正确 */
+.message-wall {
+    display: flex;
+    flex-wrap: wrap;           /* 核心：换行 */
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 20px;
+    width: 100%;
+    margin: 0 auto;            /* 修正了冒号！ */
+    align-items: flex-start;
+    max-width: 1200px;
+    box-sizing: border-box; 
+}
+
+/* 2. 修正卡片：强制不收缩 */
+.sticky-note {
+    position: relative;
+    width: 280px;              /* 宽度写死 */
+    min-height: 250px;         /* 高度写死 */
+    flex: 0 0 280px;           /* 终极绝招：禁止增长、禁止收缩、基础宽度280px */
+    padding: 25px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background-color: white;   /* 兜底色 */
+    
+    /* 强制文字换行 */
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+/* 3. 旋转逻辑：用变量更稳妥 */
+.color-1 { background: #ffc2d1 !important; transform: rotate(-2deg); }
+.color-2 { background: #ffe5b4 !important; transform: rotate(3deg); }
+.color-3 { background: #bde0fe !important; transform: rotate(-1deg); }
+.color-4 { background: #caffbf !important; transform: rotate(2deg); }
+
+/* 4. 悬停效果：提高优先级 */
+.sticky-note:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 100;
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.2);
+}
+
+/* 5. 文字溢出控制 */
+.note-text {
+    font-family: "Kaiti", "STKaiti", "楷体", serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+    flex-grow: 1;
+    overflow: hidden; /* 防止文字万一真的太长导致卡片变形 */
+}
+.friends-page {
+    background-color: peachpuff; /* 极浅的粉色 */
+    /* 或者试试以下颜色：
+       #f0f7ff (浅蓝)
+       #f6fff8 (浅绿)
+       #ffffff (纯白) 
+    */
+    background-image: none;    /* 这一行可以去掉之前的点状底纹 */
+}
